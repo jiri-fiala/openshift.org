@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title><%= current_page.data.title || settings.site_title %></title>
-  <meta name="description" content="The next generation open source app hosting platform by Red Hat">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="9jyGvNki3NSELTYJ7t_XbF-YQZ8jjfm7LqQQGNq4SSg">
-  <link class="skin_color" href="#" media="screen" rel="stylesheet">
-  <%= stylesheet_link_tag "main.css", :media => "all" %>
-  <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i", :media => "screen" %>
-  <%= favicon_tag "/img/icons/apple-touch-icon.png", :rel => "apple-touch-icon-precomposed" %>
-  <%= favicon_tag "/img/icons/favicon.png" %>
-  <!--[if lte IE 8]>
-    <%= javascript_include_tag "responsive/html5shiv.js" %>
-    <%= javascript_include_tag "responsive/respond.js" %>
-  <![endif]-->
-  <%= partial "layouts/tracking" %>
-</head>
-
-
+  <head>
+    <meta charset="utf-8">
+    <title><%= current_page.data.title || settings.site_title %></title>
+    <meta name="description" content="The next generation open source app hosting platform by Red Hat">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="9jyGvNki3NSELTYJ7t_XbF-YQZ8jjfm7LqQQGNq4SSg">
+    <link class="skin_color" href="#" media="screen" rel="stylesheet">
+    <%= stylesheet_link_tag "main.css", :media => "all" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i", :media => "screen" %>
+    <%= favicon_tag "/img/icons/apple-touch-icon.png", :rel => "apple-touch-icon-precomposed" %>
+    <%= favicon_tag "/img/icons/favicon.png" %>
+    <!--[if lte IE 8]>
+      <%= javascript_include_tag "responsive/html5shiv.js" %>
+      <%= javascript_include_tag "responsive/respond.js" %>
+    <![endif]-->
+    <%= partial "layouts/tracking" %>
+  </head>
   <body>
     <header id="header">
       <%= content_for?(:navbar) ? yield_content(:navbar) : (partial "layouts/navbar") %>
       <div class="layout-wide" id="layout">
         <div class="header-container">
           <div class="logo">
-            <a href="https://www.openshift.org/"><img src="img/logo.png" alt="Open Shift Origin" width="673" height="274"></a>
+            <a href="https://www.openshift.org/"><img src="/img/logo.png" alt="Open Shift Origin" width="673" height="274"></a>
           </div>
           <%= yield_content(:header) %>
           <div class="origin-bg">
-            <img src="img/origin.png" srcset="img/origin-2x.png 2x" alt="origin" width="2129" height="961">
+            <img src="/img/origin.png" srcset="/img/origin-2x.png 2x" alt="origin" width="2129" height="961">
           </div>
         </div>
       </header>
@@ -41,34 +39,35 @@
       <%= partial "layouts/footer" %>
     </div>
 
-    <%= javascript_include_tag "jquery-1.11.2.min.js" %>
-    <%= javascript_include_tag "jquery.main.js" %>
+    <div class="invisible">
+      <%= javascript_include_tag "jquery-1.11.2.min.js" %>
+      <%= javascript_include_tag "jquery.main.js" %>
 
-    <!-- Google Remarekting -->
-    <script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 1007064360;
-    var google_custom_params = window.google_tag_params;
-    var google_remarketing_only = true;
-    /* ]]> */
-    </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-    </script>
-    <noscript>
-    <div style="display:inline;">
-    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1007064360/?value=0&amp;guid=ON&amp;script=0"/>
+      <!-- Google Remarekting -->
+      <script type="text/javascript">
+      /* <![CDATA[ */
+      var google_conversion_id = 1007064360;
+      var google_custom_params = window.google_tag_params;
+      var google_remarketing_only = true;
+      /* ]]> */
+      </script>
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+      <noscript>
+        <div style="display:inline;">
+          <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1007064360/?value=0&amp;guid=ON&amp;script=0"/>
+        </div>
+      </noscript>
+      <!-- Track tagged outbound Links -->
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('.analytics').click(function(e){
+            e.preventDefault();
+            trackOutboundLink($(this).attr('href'));
+          });
+        });
+      </script>
+      <!-- Place this tag right after the last button or just before your close body tag. -->
+      <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
     </div>
-    </noscript>
-    <!-- Track tagged outbound Links -->
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('.analytics').click(function(e){
-        e.preventDefault();
-        trackOutboundLink($(this).attr('href'));
-      });
-    });
-    </script>
-    <!-- Place this tag right after the last button or just before your close body tag. -->
-<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
